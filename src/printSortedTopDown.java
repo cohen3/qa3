@@ -13,7 +13,7 @@ public class printSortedTopDown {
      *              /         \
      *       +----------+  +-----------+
      *       | printArr |  | sortArray |
-     *      +-----------+  +-----------+
+     *       +----------+  +-----------+
      *                      /        \
      *                  +------+  +---------+
      *                  | size |  | copyArr |
@@ -24,6 +24,35 @@ public class printSortedTopDown {
      *     3) copyArr, size
      */
 
+    private class StubProgram extends Program{
+        /**
+         * This class's goal is to check the sortArray method as a standalone module.
+         */
+
+        // this method was copies as is 'sortArray'
+        public int[] sortArrayTest(int[] arr) {
+            if (arr == null) return null;
+            int[] res = copyArrStub(arr);
+            for(int i=0; i<size(arr); i++)
+                for (int j=0; j<size(arr)-i-1; j++)
+                    if (res[j]>res[j+1]) {
+                        int temp = res[j];
+                        res[j] = res[j+1];
+                        res[j+1] = temp;
+                    }
+            return res;
+        }
+
+        // Stub method for copyArr
+        public int[] copyArrStub(int[] arr) {
+            if (arr == null) return null;
+            int[] res = new int[size(arr)];
+            if (size(arr) >= 0) System.arraycopy(arr, 0, res, 0, size(arr));
+            return res;
+        }
+    }
+    private Program p;
+
     // for print tests
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
@@ -32,6 +61,7 @@ public class printSortedTopDown {
 
     @Before
     public void setup(){
+        p = new StubProgram();
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
     }
@@ -40,5 +70,7 @@ public class printSortedTopDown {
     public void restoreStreams() {
         System.setOut(originalOut);
         System.setErr(originalErr);
+        p = null;
     }
+
 }
