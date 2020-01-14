@@ -14,14 +14,14 @@ public class printSortedTopDown {
      *       +----------+  +-----------+
      *       | printArr |  | sortArray |
      *      +-----------+  +-----------+
-     *                              \
-     *                          +---------+
-     *                          | copyArr |
-     *                          +---------+
+     *                      /        \
+     *                  +------+  +---------+
+     *                  | size |  | copyArr |
+     *                  +------+  +---------+
      *     top down:
      *     1) printSorted
      *     2) printArr, sortArray
-     *     3) copyArr
+     *     3) copyArr, size
      */
 
     // for print tests
