@@ -33,8 +33,11 @@ public class printSortedButtomUp {
     private final PrintStream originalOut = System.out;
     private final PrintStream originalErr = System.err;
 
+    Program program;
+
     @Before
     public void setup(){
+        program = new Program();
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
     }
@@ -47,20 +50,20 @@ public class printSortedButtomUp {
 
     @Test
     public void testPrintArr() {
-        Program.printArr(new int[]{1,4,6,9});
-        assertEquals("1 4 6 9\n", outContent.toString());
+        program.printArr(new int[]{1,4,6,9});
+        assertEquals("1 4 6 9 \r\n", outContent.toString());
     }
 
     @Test
     public void testCopyArr(){
         int[] original = {1,2,3,4};
-        int[] arr = Program.copyArr(original);
+        int[] arr = program.copyArr(original);
         assertArrayEquals(original, arr);
     }
 
     @Test
     public void testSize(){
-        assertEquals(4, Program.size(new int[]{1,2,3,4}));
-        assertEquals(0, Program.size(new int[]{}));
+        assertEquals(4, program.size(new int[]{1,2,3,4}));
+        assertEquals(0, program.size(new int[]{}));
     }
 }

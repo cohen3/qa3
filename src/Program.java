@@ -3,12 +3,12 @@ public class Program {
 	
 	
 	// Returns the size of the array
-	public static int size(int[] arr) {
+	public int size(int[] arr) {
 		return arr.length;
 	}
 	
 	// Prints the array
-	public static void printArr(int[] arr) {
+	public void printArr(int[] arr) {
 		for(int val: arr)
 			System.out.print(val+" ");
 		System.out.println();
@@ -16,7 +16,7 @@ public class Program {
 	
 	// Returns index of the minimum value in the array
 	// Returns -1 if array is empty
-	public static int minValueIndex(int[] arr) {
+	public int minValueIndex(int[] arr) {
 		if (arr==null) return -1;
 		int res = arr[0];
 		for (int val: arr)
@@ -26,7 +26,7 @@ public class Program {
 	
 	// Returns index of the maximum value in the array
 	// Returns -1 if array is empty
-	public static int maxValueIndex(int[] arr) {
+	public int maxValueIndex(int[] arr) {
 		if (size(arr)<1) return -1;
 		int res = arr[0];
 		for (int val: arr)
@@ -35,25 +35,25 @@ public class Program {
 	}
 	
 	// Returns the maximum value in the array
-	public static int maxValue(int[] arr) {
+	public int maxValue(int[] arr) {
 		int ind = maxValueIndex(arr);
 		return arr[ind];
 	}
 	
 	// Returns the minimum value in the array
-	public static int minValue(int[] arr) {
+	public int minValue(int[] arr) {
 		int ind = maxValueIndex(arr);
 		return arr[ind]; 
 	}
 	
 	// Returns sum of minimum and maximum values in the array
-	public static int sumMinMax(int[] arr) {
+	public int sumMinMax(int[] arr) {
 		return minValue(arr) + maxValue(arr);
 	}
 	
 	
 	// Returns copy of the array "arr"
-	public static int[] copyArr(int[] arr) {
+	public int[] copyArr(int[] arr) {
 		if (arr == null) return null;
 		int[] res = new int[size(arr)];
 		for(int i=0; i<size(arr); i++)
@@ -63,7 +63,7 @@ public class Program {
 	
 	
 	// Return a copy of array. Swaps the minimum value in the array with maximum one
-	public static int[] swapMinMax(int[] arr) {
+	public int[] swapMinMax(int[] arr) {
 		int[] res = copyArr(arr);
 		int minInd = minValueIndex(arr);
 		int maxInd = maxValue(arr);
@@ -75,7 +75,7 @@ public class Program {
 	
 	
 	// Returns an ascending sorted copy of array "arr"
-	public static int[] sortArray(int[] arr) {
+	public int[] sortArray(int[] arr) {
 		if (arr == null) return null;
 		int[] res = copyArr(arr);
 		for(int i=0; i<size(arr); i++) 
@@ -90,7 +90,7 @@ public class Program {
 	
 	
 	// Returns true if arrays are equal
-	public static boolean equalArrays(int[] arr1, int[] arr2) {
+	public boolean equalArrays(int[] arr1, int[] arr2) {
 		if (arr1==null && arr2 == null) return true;
 		if (arr1==null || arr2 == null) return false;
 		if (size(arr1)!=size(arr2)) return false;
@@ -101,14 +101,14 @@ public class Program {
 	
 	
 	// Returns true if array "arr" is sorted in ascending order
-	public static boolean isSorted(int[] arr) {
+	public boolean isSorted(int[] arr) {
 		int[] sorted = sortArray(arr);
 		return equalArrays(arr, sorted);
 	}
 	
 	
 	// Merges two arrays "ar1" and "ar2" into one sorted array and returns it
-	public static int[] merge(int[] ar1, int[] ar2) {
+	public int[] merge(int[] ar1, int[] ar2) {
 		if (ar1==null && ar2==null) return null;
 		if (ar1==null) return sortArray(ar2);
 		if (ar2==null) return sortArray(ar1);
@@ -130,7 +130,7 @@ public class Program {
 	 * if arr is null prints:
 	 * No array
 	 */
-	public static void printSorted(int[] arr) {
+	public void printSorted(int[] arr) {
 		if (arr==null)
 			System.out.println("No array");
 		printArr(arr);

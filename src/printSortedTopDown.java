@@ -28,7 +28,7 @@ public class printSortedTopDown {
      *     3) copyArr, size
      */
 
-    private class StubProgram{
+    private class StubProgram extends Program{
         /**
          * This class's goal is to check the sortArray method as a standalone module.
          */
@@ -43,7 +43,7 @@ public class printSortedTopDown {
             printArr(arr);
         }
         // Stub method for size
-        private int size(int[] arr) {
+        public int size(int[] arr) {
             return arr.length;
         }
 
@@ -100,7 +100,7 @@ public class printSortedTopDown {
     public void testPrintSorted(){
         int[] arr = {1,5,3,4};
         p.printSorted(arr);
-        assertEquals("1 5 3 4\n1 3 4 5\n1 5 3 4", outContent.toString());
+        assertEquals("1 5 3 4\r\n1 3 4 5\r\n1 3 4 5\r\n", outContent.toString());
     }
 
     @Test
@@ -120,7 +120,7 @@ public class printSortedTopDown {
     @Test
     public void testPrintArr(){
         int[] arr = {1,2,3,4};
-        Program.printArr(arr);
-        assertEquals("1 2 3 4\n", outContent.toString());
+        p.printArr(arr);
+        assertEquals("1 2 3 4\r\n", outContent.toString());
     }
 }
