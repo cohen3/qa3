@@ -4,6 +4,10 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class printSortedTopDown {
     /**
@@ -24,23 +28,40 @@ public class printSortedTopDown {
      *     3) copyArr, size
      */
 
-    private class StubProgram extends Program{
+    private class StubProgram{
         /**
          * This class's goal is to check the sortArray method as a standalone module.
          */
 
-        // this method was copies as is 'sortArray'
-        public int[] sortArrayTest(int[] arr) {
-            if (arr == null) return null;
-            int[] res = copyArrStub(arr);
-            for(int i=0; i<size(arr); i++)
-                for (int j=0; j<size(arr)-i-1; j++)
-                    if (res[j]>res[j+1]) {
-                        int temp = res[j];
-                        res[j] = res[j+1];
-                        res[j+1] = temp;
-                    }
-            return res;
+        // this method was copies as is 'printSorted'
+        public void printSorted(int[] arr) {
+            if (arr==null)
+                System.out.println("No array");
+            printArr(arr);
+            arr = sortArray(arr);
+            printArr(sortArray(arr));
+            printArr(arr);
+        }
+        // Stub method for size
+        private int size(int[] arr) {
+            return arr.length;
+        }
+
+        // Stub method for sortArr
+        public int[] sortArray(int[] arr){
+            int[] arr2 = copyArrStub(arr);
+            Arrays.sort(arr2);
+            return arr2;
+        }
+
+        // Stub method for printArr
+        public void printArr(int[] arr){
+            String prefix = "";
+            for(int i : arr) {
+                System.out.print(prefix + i);
+                prefix = " ";
+            }
+            System.out.println();
         }
 
         // Stub method for copyArr
@@ -51,7 +72,7 @@ public class printSortedTopDown {
             return res;
         }
     }
-    private Program p;
+    private StubProgram p;
 
     // for print tests
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -73,4 +94,33 @@ public class printSortedTopDown {
         p = null;
     }
 
+    // testing 1
+
+    @Test
+    public void testPrintSorted(){
+        int[] arr = {1,5,3,4};
+        p.printSorted(arr);
+        assertEquals("1 5 3 4\n1 3 4 5\n1 5 3 4", outContent.toString());
+    }
+
+    @Test
+    public void testPrintSortedNull(){
+        boolean exception = false;
+        try {
+            p.printSorted(null);
+            assertEquals("No array\n", outContent.toString());
+        }catch(Exception e){
+            exception = true;
+        }
+        assertFalse(exception);
+    }
+
+    // testing 2
+
+    @Test
+    public void testPrintArr(){
+        int[] arr = {1,2,3,4};
+        Program.printArr(arr);
+        assertEquals("1 2 3 4\n", outContent.toString());
+    }
 }
