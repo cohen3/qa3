@@ -30,15 +30,13 @@ public class isSortedTopDown {
     @Test
     public void testEqualArrays(){
         StubProgramWithEqualArrays stubProgramWithEqualArrays = new StubProgramWithEqualArrays();
-        assertTrue(stubProgramWithEqualArrays.isSorted(new int[1]));
-
-        testNonEqualArrays();
+        assertTrue(stubProgramWithEqualArrays.isSorted(new int[]{1, 2, 3}));
     }
 
     @Test
-    private void testNonEqualArrays() {
+    public void testNonEqualArrays() {
         StubProgramWithNonEqualArrays stubProgramWithNonEqualArrays = new StubProgramWithNonEqualArrays();
-        assertFalse(stubProgramWithNonEqualArrays.isSorted(new int[1]));
+        assertFalse(stubProgramWithNonEqualArrays.isSorted(new int[]{1, 4, 3}));
     }
 
 }

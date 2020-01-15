@@ -21,13 +21,13 @@ public class mergeTopDown {
     @Test
     public void testMergeWithFirstArrayNull(){
         StubProgram1 stubProgram1 = new StubProgram1();
-        assertArrayEquals(new int[]{1, 2, 3}, stubProgram1.merge(null, new int[]{1, 2, 3}));
+        assertArrayEquals(new int[]{1, 2, 3}, stubProgram1.merge(null, new int[]{1, 3, 2}));
     }
 
     @Test
     public void testMergeWithSecondArrayNull(){
         StubProgram1 stubProgram1 = new StubProgram1();
-        assertArrayEquals(new int[]{1, 2, 3}, stubProgram1.merge(new int[]{1, 2, 3}, null));
+        assertArrayEquals(new int[]{1, 2, 3}, stubProgram1.merge(new int[]{1, 3, 2}, null));
     }
 
     @Test

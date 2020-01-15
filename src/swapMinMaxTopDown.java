@@ -41,7 +41,7 @@ public class swapMinMaxTopDown {
     private class StubProgramWithInvalidMinInd extends Program{
         @Override
         public int[] copyArr(int[] arr) {
-            return new int[]{2, 3, 1};
+            return new int[]{};
         }
 
         @Override
@@ -58,7 +58,7 @@ public class swapMinMaxTopDown {
     private class StubProgramWithInvalidMaxInd extends Program{
         @Override
         public int[] copyArr(int[] arr) {
-            return new int[]{2, 3, 1};
+            return new int[]{};
         }
 
         @Override
@@ -80,19 +80,19 @@ public class swapMinMaxTopDown {
 
     @Test
     public void testSwap2(){
-        StubProgram stubProgram = new StubProgram();
+        StubProgram2 stubProgram = new StubProgram2();
         assertArrayEquals(new int[]{2, 1, 3, 2}, stubProgram.swapMinMax(new int[]{2, 3, 1, 2}));
     }
 
     @Test
     public void testSwapWithInvalidMinInd(){
         StubProgramWithInvalidMinInd stubProgramWithInvalidMinInd = new StubProgramWithInvalidMinInd();
-        assertNull(stubProgramWithInvalidMinInd.swapMinMax(new int[]{2, 3, 1}));
+        assertNull(stubProgramWithInvalidMinInd.swapMinMax(new int[]{}));
     }
 
     @Test
     public void testSwapWithInvalidMaxInd(){
         StubProgramWithInvalidMaxInd stubProgramWithInvalidMaxInd = new StubProgramWithInvalidMaxInd();
-        assertNull(stubProgramWithInvalidMaxInd.swapMinMax(new int[]{2, 3, 1}));
+        assertNull(stubProgramWithInvalidMaxInd.swapMinMax(new int[]{}));
     }
 }
