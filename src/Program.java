@@ -138,6 +138,4 @@ public class Program {
 		printArr(sortArray(arr));
 		printArr(arr);
 	}
-	
-	
 }
