@@ -74,39 +74,6 @@ public class printSortedBottomUp {
         System.setErr(originalErr);
     }
 
-    // testing 1
-
-    @Test
-    public void testSize(){
-        assertEquals(4, program.size(new int[]{1,2,3,4}));
-        assertEquals(0, program.size(new int[]{}));
-    }
-
-    @Test
-    public void testPrintArr(){
-        int[] arr = {1,2,3,4};
-        program.printArr(arr);
-        assertEquals("1 2 3 4\r\n", outContent.toString());
-    }
-
-    // testing 2
-
-    @Test
-    public void testCopyArr(){
-        int[] original = {1,2,3,4};
-        int[] arr = program.copyArr(original);
-        assertArrayEquals(original, arr);
-    }
-
-    //testing 3
-
-    @Test
-    public void testSortArray(){
-        program = new FixedProgram();
-        int[] original = new int[]{1,4,2,3};
-        assertArrayEquals(new int[]{1,2,3,4}, program.sortArray(original));
-    }
-
     // testing 4
 
     @Test
